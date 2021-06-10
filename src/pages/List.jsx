@@ -3,7 +3,7 @@ import EmployerService from "../services/employerService";
 import JobPostingService from "../services/jobPostingService";
 import JobSeekerService from "../services/jobSeekerService";
 import JobPositionService from "../services/jobPositionService";
-import {randomUpdatedDate} from '@material-ui/x-grid-data-generator';
+import { randomUpdatedDate } from "@material-ui/x-grid-data-generator";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -85,55 +85,65 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
+    position:"relative",
+    marginTop:340,
+    marginBottom:200,
     backgroundColor: "white",
     root: {
       width: "100%",
     },
-    container: {
-      maxHeight: 440,
-    },
+  
   },
 }));
 
 const columns = [
-  { id: "companyName", label: "Company Name", minWidth: 170 },
-  { id: "website", label: "Website", minWidth: 100 },
-  {id: "email",label: "E-Mail",minWidth: 170,align: "left"},
-  {id: "phoneNumber",label: "Phone Number",type:"number",minWidth: 170,align: "left"},
+  { id: "companyName", label: "Companies", minWidth: 170 },
+  // { id: "definition", label: "Posting Definition", minWidth: 170 },
+  // { id: "website", label: "Website", minWidth: 100 },
+  // {id: "email",label: "E-Mail",minWidth: 170,align: "left"},
+  // {id: "phoneNumber",label: "Phone Number",type:"number",minWidth: 170,align: "left"},
 ];
 
 const columns2 = [
-  { id: "city", label: "City", minWidth: 170 },
-  { id: "positionName", label: "Position", minWidth: 100 },
+  // { id: "city", label: "City", minWidth: 170 },
+  // { id: "positionName", label: "Position", minWidth: 100 },
   { id: "definition", label: "Definition", minWidth: 170, align: "left" },
-  { id: "openPositionNumber", label: "Open Position Number",type:"number", minWidth: 170, align: "left" },
-  { id: "postingDate",label: "Posting Date",minWidth: 170,align: "left",},
-  { id: "applicationDeadline",label: "Application Deadline",minWidth: 170, align: "left", },
-  
+  // {
+  //   id: "openPositionNumber",
+  //   label: "Open Position Number",
+  //   type: "number",
+  //   minWidth: 170,
+  //   align: "left",
+  // },
+  // { id: "postingDate", label: "Posting Date", minWidth: 170, align: "left" },
+  // {
+  //   id: "applicationDeadline",
+  //   label: "Application Deadline",
+  //   minWidth: 170,
+  //   align: "left",
+  // },
 ];
 
 const columns3 = [
   { id: "firstName", label: "First Name", minWidth: 170 },
   { id: "lastName", label: "Last Name", minWidth: 100, align: "left" },
   { id: "email", label: "E-Mail", minWidth: 170, align: "left" },
-  { id: "birthYear", label: "Birth Year",type:"number", minWidth: 170, align: "left" },
-  { label: 'Last Login', type: 'dateTime', width: 180, lastLogin: randomUpdatedDate() },
-];
-
-const columns4 = [
-  { id: "job", label: "Job", minWidth: 170 },
-];
-
-function createData(name, web, mail, phone) {
-  return { name, web, mail, phone };
-}
-
-const sortModel=[
   {
-    sort:"asc",
-  }
+    id: "birthYear",
+    label: "Birth Year",
+    type: "number",
+    minWidth: 170,
+    align: "left",
+  },
+  {
+    label: "Last Login",
+    type: "dateTime",
+    width: 180,
+    lastLogin: randomUpdatedDate(),
+  },
+];
 
-]
+const columns4 = [{ id: "job", label: "Job", minWidth: 170 }];
 
 
 export default function List() {
@@ -157,18 +167,21 @@ export default function List() {
       .then((result) => setJobPostings(result.data.data));
   }, []);
 
-  const [jobSeekers, setJobSeekers] = useState([])
-  useEffect(()=>{
-      let jobSeekerService=new JobSeekerService();
-      jobSeekerService.getJobSeekers().then(result=> setJobSeekers(result.data.data))
-  },[])    
-  
-  const [jobPositions, setJobPositions] = useState([])
-  useEffect(()=>{
-      let jobPositionService=new JobPositionService();
-      jobPositionService.getJobPositions().then(result=> setJobPositions(result.data.data))
-  },[])    
+  const [jobSeekers, setJobSeekers] = useState([]);
+  useEffect(() => {
+    let jobSeekerService = new JobSeekerService();
+    jobSeekerService
+      .getJobSeekers()
+      .then((result) => setJobSeekers(result.data.data));
+  }, []);
 
+  const [jobPositions, setJobPositions] = useState([]);
+  useEffect(() => {
+    let jobPositionService = new JobPositionService();
+    jobPositionService
+      .getJobPositions()
+      .then((result) => setJobPositions(result.data.data));
+  }, []);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -215,8 +228,8 @@ export default function List() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Paper className={classes.root}>
-          <TableContainer className={classes.container}>
+        <Paper className={classes.app}>
+          <TableContainer >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -228,6 +241,7 @@ export default function List() {
                       style={{ minWidth: column.minWidth }}
                     >
                       {column.label}
+                     
                     </TableCell>
                   ))}
                 </TableRow>
@@ -243,6 +257,7 @@ export default function List() {
                     >
                       {columns.map((column) => {
                         const value = employer[column.id];
+
                         return (
                           <TableCell
                             className={classes.info}
@@ -274,11 +289,11 @@ export default function List() {
         </Paper>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Paper className={classes.root}>
-          <TableContainer className={classes.container}>
+        <Paper className={classes.app}>
+          <TableContainer >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
-                <TableRow >
+                <TableRow>
                   {columns2.map((column) => (
                     <TableCell
                       className={classes.line}
@@ -333,8 +348,8 @@ export default function List() {
         </Paper>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <Paper className={classes.root}>
-          <TableContainer className={classes.container}>
+        <Paper className={classes.app}>
+          <TableContainer >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -374,7 +389,7 @@ export default function List() {
                         );
                       })}
                     </TableRow>
-                  );
+                  )
                 })}
               </TableBody>
             </Table>
@@ -392,8 +407,8 @@ export default function List() {
         </Paper>
       </TabPanel>
       <TabPanel value={value} index={3}>
-      <Paper className={classes.root}>
-          <TableContainer className={classes.container}>
+        <Paper className={classes.app}>
+          <TableContainer>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -426,8 +441,7 @@ export default function List() {
                             key={column.id}
                             align={column.align}
                           >
-                            {jobPosition.positionName
-                              }
+                            {jobPosition.positionName}
                           </TableCell>
                         );
                       })}
@@ -450,5 +464,5 @@ export default function List() {
         </Paper>
       </TabPanel>
     </div>
-  );
+  )
 }

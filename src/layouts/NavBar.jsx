@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import SearchIcon from "@material-ui/icons/Search";
-import Image from "../images/logo-hrms.png";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -13,6 +12,7 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
+import Image from 'material-ui-image'
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bolder",
     fontFamily: "century gothic",
     color: "black",
+    textShadow:"1px 1px 10px #b2b2db",
   },
   icon: {
     marginRight: theme.spacing(0.5),
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     color: "#3161b7",
     fontFamily: "century gothic",
+    
   },
   button: {
     color: "#250062",
@@ -43,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     width: 35,
     height: 35,
     marginLeft: theme.spacing(20),
+    
   },
   breadCrumbs: {
     width: "1140px",
@@ -103,7 +106,7 @@ export default function NavBar() {
         onClick={handleClick}
         className={classes.link}
       >
-        <img src={Image} width="200px" className={classes.image} />
+        <img src="https://res.cloudinary.com/dlytm7ohp/image/upload/v1623347529/logo-hrms_hclr4n.png" width="200px" className={classes.image} />
       </Link>
       <Link
         color="inherit"

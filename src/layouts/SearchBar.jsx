@@ -20,11 +20,20 @@ const useStyles = makeStyles((theme) => ({
       marginLeft:"25%",
       padding:"25px",
     },
+    posting:{
+      color:"white",
+      fontSize:"25px",
+      fontFamily:"century gothic",
+      fontWeight:"bold",
+      position:"relative",
+      right:320,
+      top:100,
+    },
     root2: {
       display: 'flex',
       justifyContent: 'center',
       marginLeft:"1100px",
-      marginTop:"60px",
+      marginTop:"50px",
       fontWeight:"bold",
       flexWrap: 'wrap',
       '& > *': {
@@ -36,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     background:{
       height:"290px",
       background:"#250062",
+    },
+    bar:{
+      position:"relative",
+      bottom:35,
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -110,8 +123,9 @@ export default function SearchBar() {
   return (
     <div className={classes.background}>
       <div className={classes.root}>
+      <Typography className={classes.posting}>Featured Postings</Typography>
     <ThemeProvider theme={theme}>
-    <AppBar position="static">
+    <AppBar position="static" className={classes.bar}>
       <Toolbar>
         <IconButton
           edge="start"

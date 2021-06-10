@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container, Hidden } from '@material-ui/core';
 import './App.css';
 import NavBar from './layouts/NavBar';
 import SearchBar from './layouts/SearchBar';
@@ -7,7 +7,7 @@ import  Dashboard  from './layouts/DashBoard'
 
 function App() {
   return (
-    <div>
+    <div style={{overflow:"hidden"}}>
        <NavBar/>
       <SearchBar/>
       <Container>
