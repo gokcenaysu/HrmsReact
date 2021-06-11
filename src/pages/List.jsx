@@ -53,49 +53,6 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  tab: {
-    backgroundColor: "#3161b7",
-  },
-  pagination: {
-    backgroundColor: "#250062",
-    color: "white",
-    fontWeight: "bold",
-  },
-  line: {
-    backgroundColor: "#250062",
-    color: "white",
-    fontFamily: "century gothic",
-    fontWeight: "bold",
-    fontSize: "20px",
-  },
-  info: {
-    fontWeight: "bold",
-    fontSize: "14px",
-    fontFamily: "century gothic",
-  },
-  caption: {
-    fontWeight: "bold",
-    fontFamily: "century gothic",
-    fontSize: "15px",
-  },
-  text: {
-    color: "white",
-  },
-  root: {
-    flexGrow: 1,
-    width: "100%",
-    position:"relative",
-    marginTop:340,
-    marginBottom:200,
-    backgroundColor: "white",
-    root: {
-      width: "100%",
-    },
-  
-  },
-}));
-
 const columns = [
   { id: "companyName", label: "Companies", minWidth: 170 },
   // { id: "definition", label: "Posting Definition", minWidth: 170 },
@@ -124,27 +81,26 @@ const columns2 = [
   // },
 ];
 
-const columns3 = [
-  { id: "firstName", label: "First Name", minWidth: 170 },
-  { id: "lastName", label: "Last Name", minWidth: 100, align: "left" },
-  { id: "email", label: "E-Mail", minWidth: 170, align: "left" },
-  {
-    id: "birthYear",
-    label: "Birth Year",
-    type: "number",
-    minWidth: 170,
-    align: "left",
-  },
-  {
-    label: "Last Login",
-    type: "dateTime",
-    width: 180,
-    lastLogin: randomUpdatedDate(),
-  },
-];
+// const columns3 = [
+//   { id: "firstName", label: "First Name", minWidth: 170 },
+//   { id: "lastName", label: "Last Name", minWidth: 100, align: "left" },
+//   { id: "email", label: "E-Mail", minWidth: 170, align: "left" },
+//   {
+//     id: "birthYear",
+//     label: "Birth Year",
+//     type: "number",
+//     minWidth: 170,
+//     align: "left",
+//   },
+//   {
+//     label: "Last Login",
+//     type: "dateTime",
+//     width: 180,
+//     lastLogin: randomUpdatedDate(),
+//   },
+// ];
 
 const columns4 = [{ id: "job", label: "Job", minWidth: 170 }];
-
 
 export default function List() {
   const classes = useStyles();
@@ -167,21 +123,21 @@ export default function List() {
       .then((result) => setJobPostings(result.data.data));
   }, []);
 
-  const [jobSeekers, setJobSeekers] = useState([]);
-  useEffect(() => {
-    let jobSeekerService = new JobSeekerService();
-    jobSeekerService
-      .getJobSeekers()
-      .then((result) => setJobSeekers(result.data.data));
-  }, []);
+  // const [jobSeekers, setJobSeekers] = useState([]);
+  // useEffect(() => {
+  //   let jobSeekerService = new JobSeekerService();
+  //   jobSeekerService
+  //     .getJobSeekers()
+  //     .then((result) => setJobSeekers(result.data.data));
+  // }, []);
 
-  const [jobPositions, setJobPositions] = useState([]);
-  useEffect(() => {
-    let jobPositionService = new JobPositionService();
-    jobPositionService
-      .getJobPositions()
-      .then((result) => setJobPositions(result.data.data));
-  }, []);
+  // const [jobPositions, setJobPositions] = useState([]);
+  // useEffect(() => {
+  //   let jobPositionService = new JobPositionService();
+  //   jobPositionService
+  //     .getJobPositions()
+  //     .then((result) => setJobPositions(result.data.data));
+  // }, []);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -214,7 +170,7 @@ export default function List() {
             label="Employers"
             {...a11yProps(0)}
           />
-          <Tab
+          {/* <Tab
             className={classes.caption}
             label="Job Postings"
             {...a11yProps(1)}
@@ -223,13 +179,13 @@ export default function List() {
             className={classes.caption}
             label="Job Seekers"
             {...a11yProps(2)}
-          />
-          <Tab className={classes.caption} label="Jobs" {...a11yProps(3)} />
+          /> */}
+          <Tab className={classes.caption} label="Job Advertisements" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <Paper className={classes.app}>
-          <TableContainer >
+          <TableContainer>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -241,7 +197,6 @@ export default function List() {
                       style={{ minWidth: column.minWidth }}
                     >
                       {column.label}
-                     
                     </TableCell>
                   ))}
                 </TableRow>
@@ -292,8 +247,8 @@ export default function List() {
         <Paper className={classes.app}>
           <TableContainer >
             <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
+              <TableHead >
+                <TableRow >
                   {columns2.map((column) => (
                     <TableCell
                       className={classes.line}
@@ -309,7 +264,7 @@ export default function List() {
               <TableBody>
                 {jobPostings.map((jobPosting) => {
                   return (
-                    <TableRow
+                    <TableRow 
                       hover
                       role="checkbox"
                       tabIndex={-1}
@@ -318,7 +273,7 @@ export default function List() {
                       {columns2.map((column) => {
                         const value = jobPosting[column.id];
                         return (
-                          <TableCell
+                          <TableCell 
                             className={classes.info}
                             key={column.id}
                             align={column.align}
@@ -347,9 +302,9 @@ export default function List() {
           />
         </Paper>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/* <TabPanel value={value} index={2}>
         <Paper className={classes.app}>
-          <TableContainer >
+          <TableContainer>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -389,7 +344,7 @@ export default function List() {
                         );
                       })}
                     </TableRow>
-                  )
+                  );
                 })}
               </TableBody>
             </Table>
@@ -405,8 +360,8 @@ export default function List() {
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
         </Paper>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
+      </TabPanel> */}
+      {/* <TabPanel value={value} index={3}>
         <Paper className={classes.app}>
           <TableContainer>
             <Table stickyHeader aria-label="sticky table">
@@ -462,7 +417,61 @@ export default function List() {
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
         </Paper>
-      </TabPanel>
+      </TabPanel> */}
     </div>
-  )
+  );
 }
+const useStyles = makeStyles((theme) => ({
+  tab: {
+    backgroundColor: "#3161b7",
+    
+  },
+  pagination: {
+    backgroundColor: "#250062",
+    color: "white",
+    fontWeight: "bold",
+    
+  },
+  line: {
+    backgroundColor: "#250062",
+    color: "white",
+    fontFamily: "century gothic",
+    fontWeight: "bold",
+    fontSize: "20px",
+    
+  },
+  info: {
+    fontWeight: "bold",
+    fontSize: "16px",
+    fontFamily: "century gothic",
+    transition: "all 0.5s",
+    "&:hover": {
+      fontSize:"30px",
+      fontWeight:"bolder",
+    },
+    
+  },
+  caption: {
+    fontWeight: "bold",
+    fontFamily: "century gothic",
+    fontSize: "17px",
+    "&:hover": {
+      color: "#250062",
+      transition: "0.5s",
+      fontSize:"20px",
+    },
+  },
+  text: {
+    color: "white",
+  },
+  root: {
+    flexGrow: 1,
+    width: "50%",
+    position:"relative",
+    top:340,
+    backgroundColor: "white",
+    root: {
+      width: "100%",
+    },
+  },
+}));

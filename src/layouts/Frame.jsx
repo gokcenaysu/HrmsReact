@@ -17,103 +17,12 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-
-const useStyles = makeStyles((theme) => ({
-  
-  
-  root3:{
-    position:"relative",
-    top:300,
-    marginTop:5,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-    fontFamily: "century gothic",
-    color: "white",
-    
-  },
-  pos: {
-    marginBottom: 12,
-    fontFamily: "century gothic",
-    color: "white",
-  },
-  title: {
-    fontFamily: "century gothic",
-    fontSize: 15,
-    color: "white",
-  },
-  title2: {
-    fontFamily: "century gothic",
-    fontSize: 30,
-    lineHeight: 1.2,
-  },
-  desc: {
-    fontSize: 15,
-    fontFamily: "century gothic",
-    color: "rgba(0, 0, 0, 0.54)",
-    fontWeight: "bold",
-    color: "white",
-  },
-  table: {
-    position: "relative",
-    bottom: 100,
-  },
-  more: {
-    fontFamily: "century gothic",
-    color: "white",
-  },
-  button: {
-    fontFamily: "century gothic",
-    color: "#250062",
-    fontWeight: "bolder",
-  },
-  link: {
-    color: "#3161b7",
-  },
- 
-
-  media: {
-    objectFit: "cover",
-  },
-  caption: {
-    fontFamily: "century gothic",
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
-    position: "relative",
-    bottom: 150,
-    textShadow:"1px 1px 2px #b2b2db",
-  },
-  desc: {
-    fontFamily: "century gothic",
-    fontSize: 13,
-    fontWeight: "bold",
-    color: "white",
-    position: "relative",
-    bottom: 150,
-    textShadow:"1px 1px 10px #b2b2db",
-  },
-  click: {
-    fontFamily: "century gothic",
-    fontSize: 15,
-    fontWeight: "bold",
-    color: "#0073ff",
-    color: "white",
-    textShadow:"1px 1px 10px #b2b2db",
-  },
-  area: {
-    height: 85,
-  },
-  div: {
-    display: "flex",
-  },
- 
-}));
+import DataTable from "./DataTable";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import SchoolIcon from "@material-ui/icons/School";
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
+import { Image } from "react-bootstrap";
+import { Container } from "@material-ui/core";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
@@ -126,11 +35,11 @@ const cities = [{ id: "city", label: "City", minWidth: 170 }];
 
 export default function Frame() {
   const classes = useStyles();
-  const [cities, setCities] = useState([]);
-  useEffect(() => {
-    let cityService = new CityService();
-    cityService.getCities().then((result) => setCities(result.data.data));
-  }, []);
+  // const [cities, setCities] = useState([]);
+  // useEffect(() => {
+  //   let cityService = new CityService();
+  //   cityService.getCities().then((result) => setCities(result.data.data));
+  // }, []);
   return (
     <div className={classes.table}>
       {/* <div className={classes.root}>
@@ -282,7 +191,7 @@ export default function Frame() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-          <Button className={classes.click}>CLICK TO REVIEW</Button>
+            <Button className={classes.click}>CLICK TO REVIEW</Button>
           </CardActions>
         </Card>
 
@@ -330,6 +239,178 @@ export default function Frame() {
           </CardActions>
         </Card>
       </div>
+      <div className={classes.root}>
+        <Button className={classes.text} href="#text-buttons">
+          <ListAltIcon className={classes.icon} style={{ marginLeft: 65 }} />
+          ADVERTISEMENTS POSTED TODAY
+        </Button>
+        <Button className={classes.text} href="#text-buttons">
+          <SchoolIcon className={classes.icon} style={{ marginLeft: 70 }} />
+          INTERNSHIP JOB ADVERTISEMENTS
+        </Button>
+        <Button className={classes.text} href="#text-buttons">
+          <FormatListBulletedIcon
+            className={classes.icon}
+            style={{ marginLeft: 60 }}
+          />
+          PART-TIME JOB ADVERTİSEMENTS
+        </Button>
+      </div>
+      <div>
+        <DataTable />
+      </div>   
+      <Container className={classes.container}>
+      <Image src="https://res.cloudinary.com/dlytm7ohp/image/upload/v1623423850/Ads%C4%B1z_tasar%C4%B1m_1_qge1nw.png"
+      className={classes.img}/>
+      <Typography className={classes.text2}>How do you know when you need to <br/>make a job change?</Typography>
+      </Container>
     </div>
-  )
+  );
 }
+
+const useStyles = makeStyles((theme) => ({
+  root3: {
+    position: "relative",
+    top: 10,
+
+  },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
+  },
+  title: {
+    fontSize: 14,
+    fontFamily: "century gothic",
+    color: "white",
+  },
+  pos: {
+    marginBottom: 12,
+    fontFamily: "century gothic",
+    color: "white",
+  },
+  title: {
+    fontFamily: "century gothic",
+    fontSize: 15,
+    color: "white",
+  },
+  title2: {
+    fontFamily: "century gothic",
+    fontSize: 30,
+    lineHeight: 1.2,
+  },
+  desc: {
+    fontSize: 15,
+    fontFamily: "century gothic",
+    color: "rgba(0, 0, 0, 0.54)",
+    fontWeight: "bold",
+    color: "white",
+  },
+  table: {
+    position: "relative",
+    bottom: 100,
+  },
+  more: {
+    fontFamily: "century gothic",
+    color: "white",
+  },
+  button: {
+    fontFamily: "century gothic",
+    color: "#250062",
+    fontWeight: "bolder",
+  },
+  link: {
+    color: "#3161b7",
+  },
+
+  media: {
+    objectFit: "cover",
+  },
+  caption: {
+    fontFamily: "century gothic",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+    position:"relative",
+    top: -150,
+    textShadow: "1px 1px 2px #b2b2db",
+  },
+  desc: {
+    fontFamily: "century gothic",
+    fontSize: 13,
+    fontWeight: "bold",
+    color: "white",
+    textShadow: "1px 1px 10px #b2b2db",
+    position:"relative",
+    top:-150,
+  },
+  click: {
+    fontFamily: "century gothic",
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#0073ff",
+    color: "white",
+    textShadow: "1px 1px 10px #b2b2db",
+  },
+  area: {
+    height: 85,
+    transition: "all 0.5s",
+    "&:hover": {
+      opacity: 0.5,
+    },
+  },
+  div: {
+    display: "flex",
+  },
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+    background: "#250062",
+    position:"relative",
+    top:50,
+  },
+  text: {
+    fontFamily: "century gothic",
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "white",
+    textShadow: "2px 2px 8px #000000",
+    transition: "all 0.5s",
+    "&:hover": {
+      color: "white",
+      opacity: 0.7,
+    },
+  },
+  icon: {
+    width: 40,
+    height: 40,
+    color: "white",
+  },
+  img:{
+    width:500,
+    height:450,
+    position:"relative",
+    top:-770,
+    left:730,
+    transition: "all 0.5s",
+    "&:hover": {
+      objectFit:"cover",      
+      width:"520px",
+      height:"470px",
+    },
+  },
+  text2:{
+    position:"relative",
+    bottom:860,
+    left:750,
+    fontFamily:"century gothic",
+    fontWeight:"bold",
+    fontSize:25,
+  },
+  container:{
+    position:"relative",
+    top:380,
+    right:20,
+  }
+}));

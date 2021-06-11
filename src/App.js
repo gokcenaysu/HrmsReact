@@ -13,7 +13,6 @@ function App() {
       <Container>
         <Dashboard/>
       </Container>
-      <Footer/>
     </div>
   );
 }
