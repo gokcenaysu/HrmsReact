@@ -143,16 +143,15 @@ export default function SideBar() {
             <Button className={classes.click}>Apply</Button>
             <Button className={classes.click}>Learn More</Button>
           </CardActions>
-        </Card>
-      </Carousel>
-      ;
+        </Card> 
+      </Carousel> 
     </div>
   );
 }
 const useStyles = makeStyles({
   root: {
     maxWidth: 400,
-    background: "#3161b7",
+    background: "linear-gradient(45deg,#0073ff, #FFFFFF )",
   },
   media: {
     objectFit: "cover",
@@ -171,7 +170,7 @@ const useStyles = makeStyles({
     color: "black",
     transition: "all 0.5s",
     "&:hover": {
-      color: "white",
+      color: "#0073ff",
       opacity: 0.9,
     },
   },
@@ -185,12 +184,11 @@ const useStyles = makeStyles({
     fontFamily: "century gothic",
     fontSize: 15,
     fontWeight: "bold",
-    color: "#0073ff",
-    color: "white",
-    textShadow: "2px 2px 8px #000000",
+    color: "black",
+    textShadow: "2px 2px 8px #FFFFFF",
     transition: "all 0.5s",
     "&:hover": {
-      color: "#250062",
+      color: "#0073ff ",
       fontWeight:"bolder",
     },
   },

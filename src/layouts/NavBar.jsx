@@ -33,17 +33,15 @@ export default function NavBar() {
   }
 
   return (
-    <Breadcrumbs className={classes.breadCrumbs}>
+    <div style={{height:"170px", background: "linear-gradient(45deg,  #ffffff, #0073ff, #250062)"}}>
       <Link
-        marginRight="4px"
+       className={classes.link}
         color="inherit"
         href="http://localhost:3000/"
         onClick={handleClick}
-        className={classes.link}
       >
-        <img
-          src="https://res.cloudinary.com/dlytm7ohp/image/upload/v1623347529/logo-hrms_hclr4n.png"
-          width="200px"
+         <img
+          src="https://res.cloudinary.com/dlytm7ohp/image/upload/v1623494513/JobClick_mmuree.png"
           className={classes.image}
         />
       </Link>
@@ -56,6 +54,7 @@ export default function NavBar() {
         <SearchIcon className={classes.icon} />
         Look For a Job
       </Link>
+      
       <Link
         color="inherit"
         href="/getting-started/installation/"
@@ -65,59 +64,51 @@ export default function NavBar() {
         <LocalLibraryIcon className={classes.icon} />
         Career Guide
       </Link>
+      
       <Link
         color="inherit"
         href="/getting-started/installation/"
         onClick={handleClick}
         className={classes.link}
       >
-        <LocalLibraryIcon className={classes.icon} />
+        <LocalLibraryIcon className={classes.icon}/>
         Position Guide
       </Link>
+      
 
       {isAuthenticated ? (
         <LoggedIn logOut={handleLogOut} bisey="1" />
       ) : (
         <LoggedOut logIn={handleLogIn} />
       )}
-    </Breadcrumbs>
+    </div>
   );
 }
 const useStyles = makeStyles((theme) => ({
   link: {
-    display: "flex",
     fontWeight: "bolder",
-    fontFamily: "century gothic",
+    position:"relative",
+    left:45,
+    top:-100,
+    padding:"10px",
+    fontFamily: "arial",
     color: "black",
     textShadow: "1px 1px 10px #b2b2db",
+    "&:hover": {
+      color:"white",
+    }
   },
   icon: {
-    marginRight: theme.spacing(0.5),
-    width: 40,
-    height: 40,
-    marginLeft: theme.spacing(0.6),
+    position:"relative",
+    top:5,
+    right:3,
+    width: 30,
+    height: 30,
   },
   image: {
-    marginTop: theme.spacing(2.0),
-  },
-  paper: {
-    marginRight: theme.spacing(2),
-    color: "#3161b7",
-    fontFamily: "century gothic",
-  },
-  button: {
-    color: "#250062",
-    fontWeight: "bolder",
-    fontSize: "15px",
-    fontFamily: "century gothic",
-    width: 35,
-    height: 35,
-    marginLeft: theme.spacing(20),
-  },
-  breadCrumbs: {
-    width: "1140px",
-    marginLeft: "180px",
-    backgroundColor: "white",
-    height: "70px",
+    position:"relative",
+    top:110,
+    left:-35,
+    width:"300px",
   },
 }));

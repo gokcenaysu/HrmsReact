@@ -366,7 +366,7 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
-    background: "#250062",
+    background: "#1B0086",
     position:"relative",
     top:50,
   },

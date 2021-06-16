@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Chip from "@material-ui/core/Chip";
+import { bounce } from 'react-animations';
 
 export default function SearchBar() {
   const classes = useStyles();
@@ -91,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
   background: {
     height: "290px",
-    background: "#250062",
+    background: "linear-gradient(45deg,  #0073ff, #250062, #000000)",
   },
   bar: {
     marginTop:-130,
@@ -153,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#000000",
+      main: "#FFFFF",
     },
   },
 });

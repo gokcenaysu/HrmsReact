@@ -50,7 +50,7 @@ export default function LoggedOut({ logIn }) {
   };
 
   return (
-    <div>
+    <div style={{position:"relative", top:15}}>
       <AccountCircleIcon
         className={classes.icon}
         aria-controls="customized-menu"
@@ -84,8 +84,8 @@ export default function LoggedOut({ logIn }) {
 }
 const useStyles = makeStyles((theme) => ({
   icon: {
-    width: "60px",
-    height: "60px",
+    width: "70px",
+    height: "70px",
     marginLeft: 150,
     color: "#250062",
     transition: "all 0.5s",

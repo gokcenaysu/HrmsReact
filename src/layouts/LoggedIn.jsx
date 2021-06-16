@@ -7,7 +7,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InfoIcon from "@material-ui/icons/Info";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { makeStyles } from "@material-ui/core/styles";
-import { CardMedia, Typography } from "@material-ui/core";
+import { Badge, CardMedia, Typography } from "@material-ui/core";
+import EmailIcon from "@material-ui/icons/Email";
 
 const StyledMenu = withStyles({
   paper: {
@@ -53,7 +54,7 @@ export default function LoggedIn({ logOut }) {
   };
 
   return (
-    <div>
+    <div style={{ position: "relative", top: -80, left: 1250 }}>
       <CardMedia
         className={classes.icon}
         image="https://res.cloudinary.com/dlytm7ohp/image/upload/v1622656124/me_c2qdeo.jpg"
@@ -64,6 +65,7 @@ export default function LoggedIn({ logOut }) {
       >
         <Typography className={classes.name}>Aysu Gökcen</Typography>
       </CardMedia>
+
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -75,7 +77,16 @@ export default function LoggedIn({ logOut }) {
           <ListItemIcon>
             <InfoIcon style={{ color: "#250062", height: 35, width: 35 }} />
           </ListItemIcon>
-          <ListItemText className={classes.text}>My Information</ListItemText>
+          <ListItemText className={classes.text}>My Account</ListItemText>
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <EmailIcon style={{ color: "#250062", height: 35, width: 35 }} />
+          <ListItemText
+            className={classes.text}
+            style={{ position: "relative", left: 20 }}
+          >
+            Messages
+          </ListItemText>
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>
@@ -95,14 +106,14 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     width: "60px",
     height: "60px",
-    marginLeft: 150,
+    position: "relative",
+    top: -30,
+    left: 110,
     color: "#250062",
     borderRadius: 40,
     transition: "all 0.5s",
     "&:hover": {
-      color: "#3161b7",
-      width: 70,
-      height: 70,
+      opacity: 0.6,
     },
   },
   text: {
@@ -110,13 +121,19 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "century gothic",
     transition: "all 0.5s",
     "&:hover": {
-      color: "#250062",
       opacity: 0.6,
     },
   },
   name: {
-    marginLeft: 75,
-    fontFamily: "century gothic",
+    position: "relative",
+    left:2,
+    top: 65,
+    textAlign: "center",
     fontWeight: "bold",
+    color: "white",
+    transition: "all 0.5s",
+    "&:hover": {
+      opacity: 0.6,
+    },
   },
 }));

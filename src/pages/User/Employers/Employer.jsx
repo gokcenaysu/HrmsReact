@@ -172,6 +172,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#250062",
     color: "white",
     fontWeight: "bold",
+    height:70,
     
   },
   line: {
@@ -209,7 +210,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    marginTop: 350,
+    position:"relative",
+    top:45,
     backgroundColor: "white",
     root: {
       width: "100%",
