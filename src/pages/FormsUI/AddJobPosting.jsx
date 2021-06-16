@@ -7,8 +7,7 @@ import Textfield from "./Textfield";
 import { TextField, MenuItem } from "@material-ui/core";
 import { useField, useFormikContext } from "formik";
 import CityService from "../../services/cityService";
-import { Dropdown } from "react-bootstrap";
-import { Select } from "@material-ui/core";
+import Select from './Select'
 
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
@@ -38,44 +37,12 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 export default function AddJobPosting() {
-  const SelectWrapper = ({ name, options, ...otherProps }) => {
-    const { setFieldValue } = useFormikContext();
-    const [field, meta] = useField(name);
-    const handleChange = (evt) => {
-      const { value } = evt.target;
-      setFieldValue(name, value);
-    };
-    const configSelect = {
-      ...field,
-      select: true,
-      variant: "outlined",
-      fullWidth: true,
-      onChange: handleChange,
-    };
-    return (
-      <TextField {...configSelect}>
-        {Object.keys(citiesOptions).map((city, index) => {
-          return (
-            <MenuItem key={index} value={city}>
-              {options[city]}
-            </MenuItem>
-          );
-        })}
-      </TextField>
-    );
-  };
-  const classes = useStyles();
+const classes = useStyles();
   const [cities, setCities] = useState([]);
   useEffect(() => {
     let cityService = new CityService();
-    cityService.getCities().then((result) => setCities(result.data.data));
+    cityService.getCities().then((result) =>  {setCities(result.data.data); console.log(result)});
   }, []);
-
-  const citiesOptions = cities.map((city, index) => ({
-    key: index,
-    text: city.name,
-    value: city.id,
-  }));
 
   return (
     <Grid item xs={12}>
@@ -99,10 +66,12 @@ export default function AddJobPosting() {
                 <Grid item xs={6}>
                   <Textfield name="positionName" label="Job Position" />
                 </Grid>
-
                 <Grid item xs={6}>
-                  <Select name="city" label="City" options={citiesOptions} />
-                </Grid>
+                    <Select 
+                    name="city"
+                    label="City"
+                    options={cities}/>
+           </Grid>
 
                 <Grid item xs={12}>
                   <Textfield name="jobDefinition" label="Definition" />

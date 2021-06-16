@@ -1,4 +1,5 @@
 import { Container, Hidden } from '@material-ui/core';
+import "semantic-ui-css/semantic.min.css";
 import './App.css';
 import NavBar from './layouts/NavBar';
 import SearchBar from './layouts/SearchBar';
