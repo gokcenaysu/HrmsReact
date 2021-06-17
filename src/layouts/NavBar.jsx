@@ -77,7 +77,7 @@ export default function NavBar() {
       
 
       {isAuthenticated ? (
-        <LoggedIn logOut={handleLogOut} bisey="1" />
+        <LoggedIn logOut={handleLogOut}/>
       ) : (
         <LoggedOut logIn={handleLogIn} />
       )}

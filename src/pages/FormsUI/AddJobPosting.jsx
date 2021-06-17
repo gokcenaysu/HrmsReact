@@ -8,6 +8,7 @@ import { TextField, MenuItem } from "@material-ui/core";
 import { useField, useFormikContext } from "formik";
 import CityService from "../../services/cityService";
 import Select from './Select'
+import JobPositionService from "../../services/jobPositionService";
 
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
@@ -41,7 +42,15 @@ const classes = useStyles();
   const [cities, setCities] = useState([]);
   useEffect(() => {
     let cityService = new CityService();
-    cityService.getCities().then((result) =>  {setCities(result.data.data); console.log(result)});
+    cityService.getCities().then((result) => setCities(result.data.data));
+  }, []);
+
+  const [jobPositions, setJobPositions] = useState([]);
+  useEffect(() => {
+    let jobPositionService = new JobPositionService();
+    jobPositionService
+      .getJobPositions()
+      .then((result) => setJobPositions(result.data.data));
   }, []);
 
   return (
@@ -64,7 +73,9 @@ const classes = useStyles();
                 </Grid>
 
                 <Grid item xs={6}>
-                  <Textfield name="positionName" label="Job Position" />
+                  <Textfield name="positionName" 
+                  label="Job Position" 
+                  options={jobPositions}/>
                 </Grid>
                 <Grid item xs={6}>
                     <Select 

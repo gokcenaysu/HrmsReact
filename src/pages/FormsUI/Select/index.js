@@ -7,7 +7,7 @@ const SelectWrapper = ({
     options,
     ...otherProps
 }) => {
-    console.log(options[0])
+    
     const { setFieldValue } = useFormikContext();
     const[field, meta]=useField(name);
 
@@ -31,6 +31,7 @@ const SelectWrapper = ({
     }
 
     return(
+
         <TextField {...configSelect} >
            {options.map((item, pos) => 
                (
@@ -40,7 +41,9 @@ const SelectWrapper = ({
                )
            )} 
         </TextField>
+       
     );
+    
 };
 
 export default SelectWrapper;
