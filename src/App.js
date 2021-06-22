@@ -1,26 +1,39 @@
-import { Container, Hidden } from '@material-ui/core';
+import React, {useState, useEffect} from 'react';
+import { Container} from '@material-ui/core';
 import "semantic-ui-css/semantic.min.css";
 import './App.css';
-import NavBar from './layouts/NavBar';
-import SearchBar from './layouts/SearchBar';
+import PreLoader from "./layouts/PreLoader"
+import NavBar from './layouts/NavBar'
 import  Dashboard  from './layouts/DashBoard'
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import Intro from './layouts/Intro';
+import Home from './pages/Home/Home';
+import Footer from './layouts/Footer';
 
 function App() {
+  const [isLoading, setIsLoading] =useState(true);
+
+  useEffect(() => {
+    setTimeout(()=>{
+      setIsLoading(false);
+    },2000);
+  })
   return (
-    <div style={{overflow:"hidden",background: "linear-gradient(45deg,  #000000, #250062,  #000000)",
-  }}>
-        <NavBar/>
-       <Route exact path="/" component={SearchBar}/>
-      <Container style={{background:"white"}}>
-        <Dashboard/>
-      </Container>
+    <div> 
+    {isLoading==true? 
+        <PreLoader/> :
+        <>
+        <Route path="/" component={NavBar}/>
+        <Route exact path="/" component={Home}/>
+        <Container>
+          <Dashboard/>
+        </Container> 
+        <Route path="/" component={Footer}/>
+        </>
+    }
+  
+     
     </div>
   );
 }

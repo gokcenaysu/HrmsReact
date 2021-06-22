@@ -1,108 +1,48 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { makeStyles } from "@material-ui/core/styles";
-
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5",
-  },
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
+import { Button } from "@material-ui/core";
 
 export default function LoggedOut({ logIn }) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
-    <div style={{position:"relative", top:15}}>
-      <AccountCircleIcon
-        className={classes.icon}
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      >
-        ACCOUNT
-      </AccountCircleIcon>
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <StyledMenuItem>
-          <ListItemText className={classes.text}>
-            Create New Account
-          </ListItemText>
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemText onClick={logIn} className={classes.text}>
-            Log In
-          </ListItemText>
-        </StyledMenuItem>
-      </StyledMenu>
+    <div>
+      <Button className={classes.join}>Join Now</Button>
+      <Button onClick={logIn} variant="outlined" className={classes.sign}>
+        Sign In
+      </Button>
     </div>
   );
 }
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    width: "70px",
-    height: "70px",
-    marginLeft: 150,
-    color: "#250062",
+  join: {
+    position: "relative",
+    top: -32,
+    right: -1100,
+    color: "white",
+    fontFamily: "inherit",
+    fontWeight: "bold",
+    fontSize: 15,
+    borderRadius: 20,
     transition: "all 0.5s",
     "&:hover": {
-      color: "#3161b7",
-      width: 70,
-      height: 70,
-      opacity: 0.8,
+      color: "black",
+      opacity: 0.7,
     },
   },
-  text: {
-    color: "#3161b7",
-    fontFamily: "century gothic",
+  sign: {
+    position: "relative",
+    top: -32,
+    right: -1110,
+    color: "#CF5A11",
+    fontFamily: "inherit",
+    fontWeight: "bold",
+    fontSize: 15,
+    border: "2px solid #CF5A11",
+    borderRadius: 20,
     transition: "all 0.5s",
     "&:hover": {
-      color: "#250062",
-      opacity: 0.6,
+      opacity: 0.7,
     },
   },
 }));
