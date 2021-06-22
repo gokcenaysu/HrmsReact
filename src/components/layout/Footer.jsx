@@ -6,7 +6,7 @@ export default function Footer() {
   const classes = useStyles();
 
   return (
-    <div style={{ height: 60 }}>
+    <div style={{ height: 60, position:"absolute", marginBottom:0, background:"white"}}>
       <img
         className={classes.image}
         src="https://res.cloudinary.com/dlytm7ohp/image/upload/v1624280114/in-here_numxdb.png"

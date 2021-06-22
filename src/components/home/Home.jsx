@@ -386,8 +386,7 @@ const useStyles = makeStyles((theme) => ({
   caption: {
     position: "relative",
     top: 40,
-    right: 100,
-    textAlign: "right",
+    right: -650,
     fontSize: 40,
     color: "#CF5A11",
     fontFamily: "lato",
