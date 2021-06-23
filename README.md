@@ -1,5 +1,4 @@
 
-![Untitled Diagram-Page-1](https://user-images.githubusercontent.com/74874448/121353945-12c1b100-c937-11eb-8625-ecf07b557e51.png)
 
 
 # Getting Started with Create React App
